@@ -25,8 +25,255 @@ footer.footer .is-size-7 {
   line-height: 1.6;
 }
 
+/* Immersive reading mode for Icarus post pages */
+.post-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+
+.post-card-title {
+  margin: 0 !important;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.post-reading-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: #f5f6fa;
+  color: #3f51b5;
+  text-decoration: none;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.post-reading-toggle:hover {
+  background: #e8ebff;
+  color: #3141a3;
+  text-decoration: none;
+}
+
+.post-reading-toggle.is-active {
+  background: #3f51b5;
+  color: #fff;
+}
+
+.reading-outline {
+  position: fixed;
+  top: 88px;
+  left: 24px;
+  bottom: 24px;
+  width: 300px;
+  padding: 16px;
+  background: rgba(255, 255, 255, .96);
+  border: 1px solid #eef0f5;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(31, 45, 61, .12);
+  overflow: auto;
+  z-index: 25;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-12px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.reading-outline.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.reading-outline__label {
+  font-size: .95rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 12px;
+}
+
+.reading-outline__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reading-outline__item {
+  display: block;
+  color: #56657a;
+  text-decoration: none;
+  line-height: 1.55;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.reading-outline__item:hover {
+  background: #f4f7ff;
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+.reading-outline__item.is-active {
+  background: #edf1ff;
+  color: #2d3ea3;
+  font-weight: 600;
+}
+
+.reading-outline__item.is-level-2 {
+  padding-left: 16px;
+}
+
+.reading-outline__item.is-level-3 {
+  padding-left: 28px;
+}
+
+.reading-outline__item.is-level-4 {
+  padding-left: 40px;
+}
+
+.reading-outline__item.is-level-5 {
+  padding-left: 52px;
+}
+
+.reading-outline__item.is-level-6 {
+  padding-left: 64px;
+}
+
+.reading-outline__empty {
+  margin: 0;
+  color: #8a94a6;
+  font-size: .95rem;
+  line-height: 1.7;
+}
+
+body.reading-mode > .navbar,
+body.reading-mode > .footer {
+  display: none !important;
+}
+
+body.reading-mode > .section {
+  padding-top: 24px;
+  padding-bottom: 48px;
+}
+
+body.reading-mode > .section > .container {
+  width: 100%;
+  max-width: none;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+body.reading-mode .columns {
+  display: block;
+}
+
+body.reading-mode .column-main {
+  width: 100% !important;
+  max-width: none !important;
+  flex: none !important;
+}
+
+body.reading-mode .column-left,
+body.reading-mode .column-right,
+body.reading-mode .column-right-shadow {
+  display: none !important;
+}
+
+body.reading-mode .card {
+  box-shadow: none;
+}
+
+body.reading-mode .column-main > .card {
+  max-width: 980px;
+  margin: 0 48px 0 360px;
+  background: transparent;
+}
+
+body.reading-mode .column-main > .card > .card-image {
+  display: none;
+}
+
+body.reading-mode .article-meta,
+body.reading-mode .article-tags,
+body.reading-mode .social-share,
+body.reading-mode .post-navigation,
+body.reading-mode .post-copyright,
+body.reading-mode .post-reward,
+body.reading-mode .post-comment,
+body.reading-mode .article-more,
+body.reading-mode #toc,
+body.reading-mode #toc-mask {
+  display: none !important;
+}
+
+body.reading-mode .article > .content {
+  padding-top: 8px;
+  font-size: 17px;
+  line-height: 1.95;
+}
+
+body.reading-mode .article > .content h1,
+body.reading-mode .article > .content h2,
+body.reading-mode .article > .content h3,
+body.reading-mode .article > .content h4,
+body.reading-mode .article > .content h5,
+body.reading-mode .article > .content h6 {
+  scroll-margin-top: 96px;
+}
+
+body.reading-mode .article > .content img {
+  border-radius: 12px;
+}
+
+body.reading-mode .article > .content > .highlight,
+body.reading-mode .article > .content > pre {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+body.reading-mode .article > .content > .highlight,
+body.reading-mode .article > .content > pre {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media screen and (max-width: 1200px) {
+  .reading-outline {
+    width: 260px;
+  }
+
+  body.reading-mode .column-main > .card {
+    margin-left: 304px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body.reading-mode .column-main > .card {
+    margin: 0;
+    max-width: none;
+  }
+
+  .reading-outline {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 768px) {
   footer.footer {
     padding: 1.5rem 1rem;
+  }
+
+  .post-card-head {
+    gap: 8px;
+  }
+
+  .post-reading-toggle {
+    width: 36px;
+    height: 36px;
   }
 }

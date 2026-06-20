@@ -120,6 +120,165 @@
         }
     }
 
+    function slugifyHeading(text) {
+        return text.toString().trim().toLowerCase()
+            .replace(/['"’]/g, '')
+            .replace(/[^0-9a-zA-Z\u4e00-\u9fa5]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+
+    function createReadingOutline($content) {
+        const headings = [];
+        $content.find('h1, h2, h3, h4, h5, h6').each(function(index) {
+            const $heading = $(this);
+            const text = $heading.text().trim();
+            if (!text) {
+                return;
+            }
+
+            let id = $heading.attr('id');
+            if (!id) {
+                const base = slugifyHeading(text) || `reading-heading-${index + 1}`;
+                id = base;
+                let suffix = 1;
+                while (document.getElementById(id)) {
+                    id = `${base}-${suffix++}`;
+                }
+                $heading.attr('id', id);
+            }
+
+            headings.push({
+                id,
+                text,
+                level: parseInt(this.tagName.substring(1), 10)
+            });
+        });
+        return headings;
+    }
+
+    function createReadingPanel(items) {
+        const $panel = $('<aside class="reading-outline" id="reading-outline" aria-label="文章大纲"></aside>');
+        $panel.append('<div class="reading-outline__label">目录</div>');
+        const $nav = $('<nav class="reading-outline__nav"></nav>');
+
+        if (items.length === 0) {
+            $nav.append('<p class="reading-outline__empty">这篇文章还没有小标题</p>');
+        } else {
+            items.forEach(item => {
+                const $link = $('<a></a>');
+                $link.attr('href', `#${item.id}`);
+                $link.attr('data-level', item.level);
+                $link.addClass(`reading-outline__item is-level-${item.level}`);
+                $link.text(item.text);
+                $nav.append($link);
+            });
+        }
+
+        $panel.append($nav);
+        return $panel;
+    }
+
+    function initReadingMode() {
+        const $readingToggle = $('#reading-mode-toggle');
+        const $article = $('.article').first();
+        const $content = $article.children('.content').first();
+
+        if (!$readingToggle.length || !$content.length) {
+            return;
+        }
+
+        const storageKey = 'icarus-reading-mode';
+        const outlineItems = createReadingOutline($content);
+        const $outline = createReadingPanel(outlineItems);
+        const outlineState = outlineItems.map(item => ({
+            id: item.id,
+            element: document.getElementById(item.id),
+            link: $outline.find(`.reading-outline__item[href="#${item.id}"]`)
+        }));
+        let activeOutlineId = null;
+        let outlineTicking = false;
+
+        $('body').append($outline);
+
+        function updateActiveOutline() {
+            if (!$('body').hasClass('reading-mode') || outlineState.length === 0) {
+                return;
+            }
+
+            const marker = window.scrollY + 140;
+            let current = outlineState[0];
+
+            outlineState.forEach(item => {
+                if (item.element && item.element.offsetTop <= marker) {
+                    current = item;
+                }
+            });
+
+            if (!current || current.id === activeOutlineId) {
+                return;
+            }
+
+            activeOutlineId = current.id;
+            $outline.find('.reading-outline__item').removeClass('is-active');
+            current.link.addClass('is-active');
+        }
+
+        function requestOutlineUpdate() {
+            if (outlineTicking) {
+                return;
+            }
+            outlineTicking = true;
+            window.requestAnimationFrame(() => {
+                updateActiveOutline();
+                outlineTicking = false;
+            });
+        }
+
+        function setReadingMode(enabled) {
+            $('body').toggleClass('reading-mode', enabled);
+            $outline.toggleClass('is-active', enabled);
+            $readingToggle.toggleClass('is-active', enabled);
+            $readingToggle.attr('aria-pressed', enabled ? 'true' : 'false');
+            $readingToggle.attr('title', enabled ? '退出沉浸式阅读' : '沉浸式阅读');
+            $readingToggle.find('i')
+                .toggleClass('fa-book-open', !enabled)
+                .toggleClass('fa-times', enabled);
+
+            try {
+                window.localStorage.setItem(storageKey, enabled ? '1' : '0');
+            } catch (error) {
+                // Ignore storage failures in private browsing / locked-down browsers.
+            }
+        }
+
+        $readingToggle.on('click', function(event) {
+            event.preventDefault();
+            const nextState = !$('body').hasClass('reading-mode');
+            setReadingMode(nextState);
+
+            if (nextState) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            requestOutlineUpdate();
+        });
+
+        const savedState = (() => {
+            try {
+                return window.localStorage.getItem(storageKey) === '1';
+            } catch (error) {
+                return false;
+            }
+        })();
+
+        setReadingMode(savedState);
+
+        $(window).on('scroll resize load', requestOutlineUpdate);
+        requestOutlineUpdate();
+    }
+
+    initReadingMode();
+
     const $toc = $('#toc');
     if ($toc.length > 0) {
         const $mask = $('<div>');
