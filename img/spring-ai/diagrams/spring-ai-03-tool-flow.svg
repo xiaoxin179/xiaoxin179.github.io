@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="630" viewBox="0 0 1120 630">
+<rect width="1120" height="630" fill="#f8fafc"/>
+<rect x="34" y="34" width="1052" height="562" rx="26" fill="#ffffff" stroke="#d7dee8" stroke-width="2"/>
+<text x="70" y="92" font-size="38" font-weight="700" fill="#102033">工具调用完整流程</text>
+<text x="70" y="128" font-size="20" fill="#5d6878">模型决定要不要调工具，Java 代码负责真正执行</text>
+<rect x="67" y="245" width="178" height="142" rx="18" fill="#eef6ff" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="99" cy="279" r="15" fill="#ca8a04"/>
+<text x="99" y="286" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">1</text>
+<text x="125" y="287" font-size="25" font-weight="700" fill="#102033">用户问题</text>
+<path d="M 252 316 H 258" stroke="#ca8a04" stroke-width="4" stroke-linecap="round"/>
+<path d="M 258 316 l -12 -8 v16 z" fill="#ca8a04"/>
+<rect x="269" y="245" width="178" height="142" rx="18" fill="#eef6ff" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="301" cy="279" r="15" fill="#ca8a04"/>
+<text x="301" y="286" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">2</text>
+<text x="327" y="287" font-size="25" font-weight="700" fill="#102033">模型判断</text>
+<path d="M 454 316 H 460" stroke="#ca8a04" stroke-width="4" stroke-linecap="round"/>
+<path d="M 460 316 l -12 -8 v16 z" fill="#ca8a04"/>
+<rect x="471" y="245" width="178" height="142" rx="18" fill="#eef6ff" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="503" cy="279" r="15" fill="#ca8a04"/>
+<text x="503" y="286" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">3</text>
+<text x="529" y="287" font-size="25" font-weight="700" fill="#102033">工具参数</text>
+<path d="M 656 316 H 662" stroke="#ca8a04" stroke-width="4" stroke-linecap="round"/>
+<path d="M 662 316 l -12 -8 v16 z" fill="#ca8a04"/>
+<rect x="673" y="245" width="178" height="142" rx="18" fill="#eef6ff" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="705" cy="279" r="15" fill="#ca8a04"/>
+<text x="705" y="286" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">4</text>
+<text x="731" y="287" font-size="25" font-weight="700" fill="#102033">Java 执行</text>
+<path d="M 858 316 H 864" stroke="#ca8a04" stroke-width="4" stroke-linecap="round"/>
+<path d="M 864 316 l -12 -8 v16 z" fill="#ca8a04"/>
+<rect x="875" y="245" width="178" height="142" rx="18" fill="#eef6ff" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="907" cy="279" r="15" fill="#ca8a04"/>
+<text x="907" y="286" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">5</text>
+<text x="933" y="287" font-size="25" font-weight="700" fill="#102033">综合回答</text>
+<rect x="70" y="475" width="980" height="62" rx="16" fill="#f1f5f9"/>
+<text x="92" y="514" font-size="23" fill="#102033">模型不是直接操作系统，工具边界由代码定义。</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="630" viewBox="0 0 1120 630">
+<rect width="1120" height="630" fill="#f8fafc"/>
+<rect x="34" y="34" width="1052" height="562" rx="26" fill="#ffffff" stroke="#d7dee8" stroke-width="2"/>
+<text x="70" y="92" font-size="38" font-weight="700" fill="#102033">多模态输入流程</text>
+<text x="70" y="128" font-size="20" fill="#5d6878">文本问题和图片一起送给视觉模型</text>
+<rect x="63" y="245" width="220" height="142" rx="18" fill="#eef6ff" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="95" cy="279" r="15" fill="#0891b2"/>
+<text x="95" y="286" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">1</text>
+<text x="121" y="287" font-size="25" font-weight="700" fill="#102033">图片 URL/文件</text>
+<path d="M 290 316 H 310" stroke="#0891b2" stroke-width="4" stroke-linecap="round"/>
+<path d="M 310 316 l -12 -8 v16 z" fill="#0891b2"/>
+<rect x="321" y="245" width="220" height="142" rx="18" fill="#eef6ff" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="353" cy="279" r="15" fill="#0891b2"/>
+<text x="353" y="286" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">2</text>
+<text x="379" y="287" font-size="25" font-weight="700" fill="#102033">用户问题</text>
+<path d="M 548 316 H 568" stroke="#0891b2" stroke-width="4" stroke-linecap="round"/>
+<path d="M 568 316 l -12 -8 v16 z" fill="#0891b2"/>
+<rect x="579" y="245" width="220" height="142" rx="18" fill="#eef6ff" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="611" cy="279" r="15" fill="#0891b2"/>
+<text x="611" y="286" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">3</text>
+<text x="637" y="287" font-size="25" font-weight="700" fill="#102033">视觉模型</text>
+<path d="M 806 316 H 826" stroke="#0891b2" stroke-width="4" stroke-linecap="round"/>
+<path d="M 826 316 l -12 -8 v16 z" fill="#0891b2"/>
+<rect x="837" y="245" width="220" height="142" rx="18" fill="#eef6ff" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="869" cy="279" r="15" fill="#0891b2"/>
+<text x="869" y="286" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">4</text>
+<text x="895" y="287" font-size="25" font-weight="700" fill="#102033">结构化回答</text>
+<rect x="70" y="475" width="980" height="62" rx="16" fill="#f1f5f9"/>
+<text x="92" y="514" font-size="23" fill="#102033">适合发票、商品、截图理解等需要看图的任务。</text>
+</svg>
