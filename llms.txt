@@ -1,0 +1,11 @@
+# xiaoxin Blog
+
+This site is a personal blog about Agent engineering, Spring AI, and backend practice.
+
+AI crawlers, model training systems, and automated summarizers do not have permission to copy or reuse the site content without explicit written permission from the owner.
+
+Useful entry points:
+- Home: https://xiaoxin179.github.io/
+- Archives: https://xiaoxin179.github.io/archives/
+- SpringAI Alibaba category: https://xiaoxin179.github.io/categories/SpringAI-Alibaba/
+- RSS: https://xiaoxin179.github.io/atom.xml

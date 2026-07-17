@@ -60,5 +60,3 @@ Disallow: /
 
 User-agent: *
 Allow: /
-
-Sitemap: https://xiaoxin179.github.io/atom.xml
