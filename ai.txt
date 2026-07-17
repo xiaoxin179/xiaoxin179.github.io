@@ -1,0 +1,5 @@
+AI usage policy for https://xiaoxin179.github.io
+
+Automated agents, AI crawlers, model-training crawlers, and data extraction tools are not granted permission to copy, cache, summarize, index for AI retrieval, train on, or create derivative datasets from this site without explicit written permission from the site owner.
+
+This notice is advisory. Enforcement for a static GitHub Pages site depends on crawler cooperation or an upstream CDN/WAF.
